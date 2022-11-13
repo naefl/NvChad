@@ -77,38 +77,6 @@ M.general = {
   },
 }
 
-M.tabufline = {
-  plugin = true,
-
-  n = {
-    -- cycle through buffers
-    ["<TAB>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflineNext()
-      end,
-      "goto next buffer",
-    },
-
-    ["<S-Tab>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflinePrev()
-      end,
-      "goto prev buffer",
-    },
-
-    -- pick buffers via numbers
-    ["<Bslash>"] = { "<cmd> TbufPick <CR>", "Pick buffer" },
-
-    -- close buffer + hide terminal buffer
-    ["<leader>x"] = {
-      function()
-        require("nvchad_ui.tabufline").close_buffer()
-      end,
-      "close buffer",
-    },
-  },
-}
-
 M.comment = {
   plugin = true,
 
@@ -293,75 +261,6 @@ M.telescope = {
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
   },
 }
-
-M.nvterm = {
-  plugin = true,
-
-  t = {
-    -- toggle in terminal mode
-    ["<A-i>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "toggle floating term",
-    },
-
-    ["<A-h>"] = {
-      function()
-        require("nvterm.terminal").toggle "horizontal"
-      end,
-      "toggle horizontal term",
-    },
-
-    ["<A-v>"] = {
-      function()
-        require("nvterm.terminal").toggle "vertical"
-      end,
-      "toggle vertical term",
-    },
-  },
-
-  n = {
-    -- toggle in normal mode
-    ["<A-i>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "toggle floating term",
-    },
-
-    ["<A-h>"] = {
-      function()
-        require("nvterm.terminal").toggle "horizontal"
-      end,
-      "toggle horizontal term",
-    },
-
-    ["<A-v>"] = {
-      function()
-        require("nvterm.terminal").toggle "vertical"
-      end,
-      "toggle vertical term",
-    },
-
-    -- new
-
-    ["<leader>h"] = {
-      function()
-        require("nvterm.terminal").new "horizontal"
-      end,
-      "new horizontal term",
-    },
-
-    ["<leader>v"] = {
-      function()
-        require("nvterm.terminal").new "vertical"
-      end,
-      "new vertical term",
-    },
-  },
-}
-
 M.whichkey = {
   plugin = true,
 
@@ -400,70 +299,6 @@ M.blankline = {
       end,
 
       "Jump to current_context",
-    },
-  },
-}
-
-M.gitsigns = {
-  plugin = true,
-
-  n = {
-    -- Navigation through hunks
-    ["]c"] = {
-      function()
-        if vim.wo.diff then
-          return "]c"
-        end
-        vim.schedule(function()
-          require("gitsigns").next_hunk()
-        end)
-        return "<Ignore>"
-      end,
-      "Jump to next hunk",
-      opts = { expr = true },
-    },
-
-    ["[c"] = {
-      function()
-        if vim.wo.diff then
-          return "[c"
-        end
-        vim.schedule(function()
-          require("gitsigns").prev_hunk()
-        end)
-        return "<Ignore>"
-      end,
-      "Jump to prev hunk",
-      opts = { expr = true },
-    },
-
-    -- Actions
-    ["<leader>rh"] = {
-      function()
-        require("gitsigns").reset_hunk()
-      end,
-      "Reset hunk",
-    },
-
-    ["<leader>ph"] = {
-      function()
-        require("gitsigns").preview_hunk()
-      end,
-      "Preview hunk",
-    },
-
-    ["<leader>gb"] = {
-      function()
-        package.loaded.gitsigns.blame_line()
-      end,
-      "Blame line",
-    },
-
-    ["<leader>td"] = {
-      function()
-        require("gitsigns").toggle_deleted()
-      end,
-      "Toggle deleted",
     },
   },
 }
