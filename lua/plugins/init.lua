@@ -23,7 +23,7 @@ local plugins = {
     end,
   },
 
-  ["NvChad/ui"] = {
+  ["naefl/ui"] = {
     after = "base46",
     config = function()
       local present, nvchad_ui = pcall(require, "nvchad_ui")
