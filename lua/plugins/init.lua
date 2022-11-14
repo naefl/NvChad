@@ -16,22 +16,13 @@ local plugins = {
   ["NvChad/base46"] = {
     config = function()
       local ok, base46 = pcall(require, "base46")
-
       if ok then
         base46.load_theme()
       end
     end,
   },
-
   ["naefl/ui"] = {
     after = "base46",
-    config = function()
-      local present, nvchad_ui = pcall(require, "nvchad_ui")
-
-      if present then
-        nvchad_ui.setup()
-      end
-    end,
   },
 
   ["NvChad/nvterm"] = {
